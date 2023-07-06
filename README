@@ -1,0 +1,35 @@
+Instalace
+=========
+
+1. Zkopíruj soubor "99-mountcopy.rules" do složky "/etc/udev/rules.d"
+   sudo cp 99-mountcopy.rules /etc/udev/rules.d/
+
+2. Zkopíruj soubor "mountcopy" do složky "/usr/bin" a přesvědš se, že je soubor spustitelný.
+   sudo cp mountcopy /usr/bin
+   sudo chmod +x /usr/bin/mountcopy
+
+3. Načti konfiguraci UDEVu.
+   sudo udevadm control --reload-rules && sudo udevadm trigger
+
+
+Odinstalace
+===========
+
+1. Odstraň pravidlo Udevu, který jsme přidali.
+   sudo rm /etc/udev/rules.d/99-mountcopy.rules
+
+2. Odstraň pomocný skript.
+   sudo rm /usr/bin/mountcopy
+   
+3. Načti konfiguraci UDEVu.
+   sudo udevadm control --reload-rules && sudo udevadm trigger
+
+
+Diagnóza
+========
+
+1. Poslat konec výpisu logů systému po připojení flashky
+   sudo journalctl -ef
+
+2. Poslat konec výpisu logů jádra po připojení flashky. Pozor tento log se vypíše jednou a už se neaktualizuje, takže je třeba ho vyjet skutečně až po připojení flashky.
+   sudo dmesg

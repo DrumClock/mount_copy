@@ -1,0 +1,33 @@
+#!/bin/sh
+
+export PATH=/bin:/usr/bin
+
+
+# CONSTANTS
+PATTERN="*.gcode"
+DESTINATION="/home/pi/printer_data/gcodes"
+
+
+# The block device name is expected to be passed as the first argumet.
+device="$1"
+
+if [ -z "$device" ]; then
+    echo "Missing block device name!"
+    exit 1
+fi
+
+# Temporary directory where we will mount the filesystem
+mnt=$(mktemp -d)
+
+# The copied files will belong to root, but we will grant all permissions to other users.
+umask 0111
+
+# Strange error codes are for debugging purpouses.
+# Mount device into filesystem at $destination.
+mount -r "/dev/$device" "$mnt" || exit 101
+# Copy files fitting $PATTERN from the root of the drive to $DESTINATION.
+cp $(echo "$mnt/$PATTERN") "$DESTINATION/" || exit 102
+# Unmount the drives filesystem
+umount "$mnt" || exit 103
+# Remove temporary mount directory
+rmdir "$mnt" || exit 104
