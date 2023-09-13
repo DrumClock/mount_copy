@@ -1,3 +1,23 @@
+Funkce
+======
+
+1. COPY - po vložení USB Flash se souberem nebo více soubory "gcode"
+   dojde ke zkopírování do složky pro tisk
+   
+2. MOVE - po vložení prázdne USB Flash se přesunou všechny soubory 
+   "gcode" za zložky pro tisk
+   
+   
+   Složka pro tisk se nastavuje v souboru "mountcopy"
+   
+   # For Raspberry Pi use 
+   #DESTINATION="/home/pi/printer_data/gcodes"
+   
+   # For BIQU CB 1 modul use
+   DESTINATION="/home/biqu/printer_data/gcodes" 
+
+
+
 Instalace
 =========
 
@@ -10,6 +30,7 @@ Instalace
 
 3. Načti konfiguraci UDEVu.
    sudo udevadm control --reload-rules && sudo udevadm trigger
+
 
 
 Odinstalace
@@ -25,11 +46,3 @@ Odinstalace
    sudo udevadm control --reload-rules && sudo udevadm trigger
 
 
-Diagnóza
-========
-
-1. Poslat konec výpisu logů systému po připojení flashky
-   sudo journalctl -ef
-
-2. Poslat konec výpisu logů jádra po připojení flashky. Pozor tento log se vypíše jednou a už se neaktualizuje, takže je třeba ho vyjet skutečně až po připojení flashky.
-   sudo dmesg

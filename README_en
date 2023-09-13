@@ -1,0 +1,46 @@
+Function
+========
+
+1. COPY - after inserting a USB Flash with a file or several "gcode" files
+    will be copied to the print folder
+   
+2. MOVE - after inserting an empty USB Flash, all files will be moved
+   "gcode" from the print folder
+   
+   
+    The folder for printing is set in the "mountcopy" file
+   
+    # For Raspberry Pi use
+    #DESTINATION="/home/pi/printer_data/gcodes"
+   
+    # For BIQU CB 1 module use
+    DESTINATION="/home/biqu/printer_data/gcodes"
+
+
+
+Installation
+============
+
+1. Copy the file "99-mountcopy.rules" to the folder "/etc/udev/rules.d"
+    sudo cp 99-mountcopy.rules /etc/udev/rules.d/
+
+2. Copy the "mountcopy" file to the "/usr/bin" folder and make sure the file is executable.
+    sudo cp mountcopy /usr/bin
+    sudo chmod +x /usr/bin/mountcopy
+
+3. Load the UDEV configuration.
+    sudo udevadm control --reload-rules && sudo udevadm trigger
+
+
+
+Uninstallation
+==============
+
+1. Remove the Udev rule we added.
+    sudo rm /etc/udev/rules.d/99-mountcopy.rules
+
+2. Delete the helper script.
+    sudo rm /usr/bin/mountcopy
+   
+3. Load the UDEV configuration.
+    sudo udevadm control --reload-rules && sudo udevadm trigger
