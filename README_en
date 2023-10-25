@@ -16,6 +16,9 @@ Function
     # For BIQU CB 1 module use
     DESTINATION="/home/biqu/printer_data/gcodes"
 
+ !! ATTENTION!!
+ Do not use the USB flash drive while printing. 
+ The file that is currently being printed will be overwritten or moved!
 
 
 Installation

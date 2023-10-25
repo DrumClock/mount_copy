@@ -16,7 +16,9 @@ Funkce
    # For BIQU CB 1 modul use
    DESTINATION="/home/biqu/printer_data/gcodes" 
 
-
+ !! POROZ !!
+ USB flesh nepoužívat bìhem tisku.
+ Dojde k pøepsání nebo pøesunutí souboru který se právì tiskne !
 
 Instalace
 =========
