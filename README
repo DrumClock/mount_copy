@@ -1,3 +1,11 @@
+
+!! POZOR !!
+
+USB Fles nepouÅ¾Ã­vejte pÄ›hem tisku.
+Dojde k pÅ™epsÃ¡nÃ­ nebo smazÃ¡nÃ­ souboru se stejnÃ½m jmÃ©nem 
+kterÃ½ se prÃ¡vÄ› tiskne.
+
+
 Funkce
 ======
 
@@ -16,9 +24,7 @@ Funkce
    # For BIQU CB 1 modul use
    DESTINATION="/home/biqu/printer_data/gcodes" 
 
- !! POROZ !!
- USB flesh nepouívat bìhem tisku.
- Dojde k pøepsání nebo pøesunutí souboru kterı se právì tiskne !
+
 
 Instalace
 =========
@@ -46,5 +52,3 @@ Odinstalace
    
 3. NaÄti konfiguraci UDEVu.
    sudo udevadm control --reload-rules && sudo udevadm trigger
-
-
